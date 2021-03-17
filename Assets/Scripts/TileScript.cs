@@ -31,5 +31,7 @@ public class TileScript : MonoBehaviour
     public void Setup (Point gridPos, Vector3 worldPos) {
         this.GridPosition = gridPos;
         transform.position = worldPos;
+        // Using Singleton pattern to access LevelManager remotely.
+        LevelManager.Instance.Tiles.Add(gridPos, this);
     }
 }

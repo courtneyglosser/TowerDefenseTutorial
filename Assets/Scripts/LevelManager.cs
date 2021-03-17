@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField]
     private GameObject[] tilePrefabs;
@@ -84,7 +84,6 @@ public class LevelManager : MonoBehaviour
 
         newTile.Setup(gridPoint, worldPosition);
 
-        Tiles.Add(gridPoint, newTile);
     }
 
     private string[] ReadLevelText() {
@@ -97,8 +96,13 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnPortals() {
         blueSpawn = new Point (0, 0);
+        redSpawn = new Point (5, 5);
+
+        Vector2 blueSpawnPos = Tiles[blueSpawn].WorldPosition;
+        Vector2 redSpawnPos = Tiles[redSpawn].WorldPosition;
 
 
-        Instantiate(bluePortalPrefab, Tiles[blueSpawn].transform.position, Quaternion.identity);
+        Instantiate(bluePortalPrefab, blueSpawnPos, Quaternion.identity);
+        Instantiate(redPortalPrefab, redSpawnPos, Quaternion.identity);
     }
 }
