@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5944847673272205756}
   - component: {fileID: 213733330150479501}
+  - component: {fileID: 1694049046610232147}
   m_Layer: 0
   m_Name: sand_02
   m_TagString: Untagged
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c5280fe9d7881de47bac8a6daf9b7f75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -81,3 +82,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1694049046610232147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077835539637724658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910d320d2bed93941b34f0cfa974b847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

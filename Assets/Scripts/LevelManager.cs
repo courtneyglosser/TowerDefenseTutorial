@@ -11,6 +11,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private CameraMovement cameraMovement;
 
+    private Point blueSpawn;
+    private Point redSpawn;
+
+    [SerializeField]
+    private GameObject bluePortalPrefab;
+    [SerializeField]
+    private GameObject redPortalPrefab;
+
+    public Dictionary<Point, TileScript> Tiles {get; set;}
+
     public float TileSize {
         get {
             // ASSERT:  Assume all tiles are the same size.
@@ -31,6 +41,8 @@ public class LevelManager : MonoBehaviour
     }
 
     private void CreateLevel() {
+        Tiles = new Dictionary<Point, TileScript>();
+
         string[] mapData = ReadLevelText();
 
         int mapXSize = mapData[0].ToCharArray().Length;
@@ -45,24 +57,34 @@ public class LevelManager : MonoBehaviour
             char[] rowTiles = mapData[y].ToCharArray();
             for (int x = 0; x < mapXSize; x++) {
                 string tileType = rowTiles[x].ToString();
-                maxTile = PlaceTile(tileType, x, y, worldStart);
+                PlaceTile(tileType, x, y, worldStart);
             }
         }
+
+        maxTile = Tiles[new Point(mapXSize - 1, mapYSize -1)].transform.position;
 
         Vector3 limit = new Vector3(maxTile.x + TileSize, maxTile.y - TileSize);
 
         cameraMovement.SetLimits(limit);
+
+        SpawnPortals();
     }
 
-    private Vector3 PlaceTile(string tileType, int x, int y, Vector3 worldStart) {
+    private void PlaceTile(string tileType, int x, int y, Vector3 worldStart) {
         int tileIndex = int.Parse(tileType);
         // Creates a new tile based on prefab assigned in Unity Editor.
-        GameObject newTile = Instantiate(tilePrefabs[tileIndex]);
+        TileScript newTile = Instantiate(tilePrefabs[tileIndex]).GetComponent<TileScript>();
         // Positions the new tile based on TileSize information and x,y coords.
         float xf = worldStart.x + (TileSize * x);
         float yf = worldStart.y - (TileSize * y);
-        newTile.transform.position = new Vector3(xf, yf, 0);
-        return newTile.transform.position;
+
+        Vector3 worldPosition = new Vector3(xf, yf, 0);
+
+        Point gridPoint = new Point(x, y);
+
+        newTile.Setup(gridPoint, worldPosition);
+
+        Tiles.Add(gridPoint, newTile);
     }
 
     private string[] ReadLevelText() {
@@ -71,5 +93,12 @@ public class LevelManager : MonoBehaviour
         string data = fileData.text.Replace(Environment.NewLine, string.Empty);
 
         return data.Split('-');
+    }
+
+    private void SpawnPortals() {
+        blueSpawn = new Point (0, 0);
+
+
+        Instantiate(bluePortalPrefab, Tiles[blueSpawn].transform.position, Quaternion.identity);
     }
 }
