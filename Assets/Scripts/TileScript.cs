@@ -35,4 +35,14 @@ public class TileScript : MonoBehaviour
         // Using Singleton pattern to access LevelManager remotely.
         LevelManager.Instance.Tiles.Add(gridPos, this);
     }
+
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            PlaceTower();
+        }
+    }
+
+    private void PlaceTower() {
+        Debug.Log("(" + GridPosition.X + ", " + GridPosition.Y + ")");
+    }
 }
