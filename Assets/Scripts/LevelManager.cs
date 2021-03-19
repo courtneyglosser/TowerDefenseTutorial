@@ -11,6 +11,9 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField]
     private CameraMovement cameraMovement;
 
+    [SerializeField]
+    private Transform map;
+
     private Point blueSpawn;
     private Point redSpawn;
 
@@ -82,7 +85,7 @@ public class LevelManager : Singleton<LevelManager>
 
         Point gridPoint = new Point(x, y);
 
-        newTile.Setup(gridPoint, worldPosition);
+        newTile.Setup(gridPoint, worldPosition, map);
 
     }
 
