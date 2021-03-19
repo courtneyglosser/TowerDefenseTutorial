@@ -44,5 +44,6 @@ public class TileScript : MonoBehaviour
 
     private void PlaceTower() {
         Debug.Log("(" + GridPosition.X + ", " + GridPosition.Y + ")");
+        Instantiate(GameManager.Instance.TowerPrefab, transform.position, Quaternion.identity);
     }
 }
