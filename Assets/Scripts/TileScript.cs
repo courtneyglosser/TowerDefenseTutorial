@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,6 +44,13 @@ public class TileScript : MonoBehaviour
 
     private void PlaceTower() {
         Debug.Log("(" + GridPosition.X + ", " + GridPosition.Y + ")");
-        Instantiate(GameManager.Instance.TowerPrefab, transform.position, Quaternion.identity);
+
+        GameObject prefab = GameManager.Instance.TowerPrefab;
+        Vector2 pos = transform.position;
+        Quaternion rotation = Quaternion.identity;
+        
+        GameObject tower = (GameObject)Instantiate(prefab, pos, rotation);
+        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
+
     }
 }
