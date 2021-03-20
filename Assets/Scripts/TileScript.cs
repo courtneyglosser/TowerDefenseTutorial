@@ -51,6 +51,7 @@ public class TileScript : MonoBehaviour
         
         GameObject tower = (GameObject)Instantiate(prefab, pos, rotation);
         tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
+        tower.transform.SetParent(transform);
 
     }
 }
