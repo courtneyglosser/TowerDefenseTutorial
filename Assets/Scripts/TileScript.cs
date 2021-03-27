@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
@@ -37,15 +38,22 @@ public class TileScript : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) {
-            PlaceTower();
+        bool isClickingBtn = EventSystem.current.IsPointerOverGameObject();
+        bool hasClickedBtn = GameManager.Instance.ClickedBtn != null;
+
+        if (!isClickingBtn && hasClickedBtn) {
+            // ASSERT:  Pointer is not over a tower purchase button, and
+            // a tower has been selected for placement.
+            if (Input.GetMouseButtonDown(0)) {
+                PlaceTower();
+            }
         }
     }
 
     private void PlaceTower() {
         Debug.Log("(" + GridPosition.X + ", " + GridPosition.Y + ")");
 
-        GameObject prefab = GameManager.Instance.TowerPrefab;
+        GameObject prefab = GameManager.Instance.ClickedBtn.TowerPrefab;
         Vector2 pos = transform.position;
         Quaternion rotation = Quaternion.identity;
         
@@ -53,5 +61,6 @@ public class TileScript : MonoBehaviour
         tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
         tower.transform.SetParent(transform);
 
+        GameManager.Instance.BuyTower();
     }
 }
