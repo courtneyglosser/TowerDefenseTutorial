@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TileScript : MonoBehaviour
-{
+public class TileScript : MonoBehaviour {
     public Point GridPosition { get; private set; }
 
     public Vector2 WorldPosition {
@@ -18,14 +17,12 @@ public class TileScript : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 

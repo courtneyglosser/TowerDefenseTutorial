@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBtn : MonoBehaviour
-{
+public class TowerBtn : MonoBehaviour {
     [SerializeField]
     private GameObject towerPrefab;
 

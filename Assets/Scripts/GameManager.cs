@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
-{
+public class GameManager : Singleton<GameManager> {
     public TowerBtn ClickedBtn {get; set;}
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         HandleEscape();
     }
 
@@ -28,10 +25,8 @@ public class GameManager : Singleton<GameManager>
         Hover.Instance.Deactivate();
     }
 
-    private void HandleEscape()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+    private void HandleEscape() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             Hover.Instance.Deactivate();
         }
     }
