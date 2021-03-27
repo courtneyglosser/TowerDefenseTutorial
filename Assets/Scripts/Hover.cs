@@ -13,11 +13,12 @@ public class Hover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FollowMouse();
     }
 
     private void FollowMouse()
     {
-        transform.position = Camera.main.ScreenToWorldPoint();
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(pos.x, pos.y, 0);
     }
 }
