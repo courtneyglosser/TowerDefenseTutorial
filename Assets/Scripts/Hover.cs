@@ -20,8 +20,11 @@ public class Hover : Singleton<Hover>
 
     private void FollowMouse()
     {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(pos.x, pos.y, 0);
+        if (spriteRenderer.enabled)
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(pos.x, pos.y, 0);
+        }
     }
 
     public void Activate(Sprite sprite)
@@ -33,5 +36,6 @@ public class Hover : Singleton<Hover>
     public void Deactivate()
     {
         spriteRenderer.enabled = false;
+        GameManager.Instance.ClickedBtn = null;
     }
 }
