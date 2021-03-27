@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 3060640971298738675, guid: e86284f67594f2d45967c4bced277e28,
     type: 3}
+  sprite: {fileID: 21300000, guid: 956cc27049c71fd4c81c3ecfd810fb63, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +511,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8447c44bfc478a44c94f8270bf43c9d2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -518,7 +519,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &600012746
@@ -725,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6000019590108831836, guid: a9f96e7de52829943b180d00f3623350,
     type: 3}
+  sprite: {fileID: 21300000, guid: c6c1bd6353240fa42af9e84f1ddd2b0a, type: 3}
 --- !u!1 &1164031358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8525671802145565866, guid: 655edb09eb8406b4ba776996c6cc9647,
     type: 3}
+  sprite: {fileID: 21300000, guid: 03f191c4215d21d42ac36039bb3e7569, type: 3}
 --- !u!1 &1409971617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 1383951024347245428, guid: b5d62ba97e4aaad4c93c03376b838f8e,
     type: 3}
+  sprite: {fileID: 21300000, guid: 3ada38dcbbcf84c4e8154dfa56772660, type: 3}
 --- !u!1 &1489076685
 GameObject:
   m_ObjectHideFlags: 0

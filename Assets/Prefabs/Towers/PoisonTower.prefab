@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3060640971298738673}
   - component: {fileID: 3060640971298738674}
   m_Layer: 0
-  m_Name: PoisonIdle_0004_Layer-66
+  m_Name: PoisonTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
