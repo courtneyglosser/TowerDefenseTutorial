@@ -9,7 +9,9 @@ public class TileScript : MonoBehaviour {
 
     private Color32 fullColor = new Color32(255, 118, 118, 255);
     private Color32 emptyColor = new Color32(96, 255, 90, 255);
-    private SpriteRenderer spriteRenderer;
+
+    public SpriteRenderer SpriteRenderer { get; set; }
+    public bool Debugging { get; set; }
 
     public Vector2 WorldPosition {
         get{
@@ -23,7 +25,7 @@ public class TileScript : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -47,21 +49,22 @@ public class TileScript : MonoBehaviour {
         if (!isClickingBtn && hasClickedBtn) {
             // ASSERT:  Pointer is not over a tower purchase button, and
             // a tower has been selected for placement.
-            if (IsEmpty) {
+            if (IsEmpty && !Debugging) {
                 ColorTile(emptyColor);
             }
-            else {
+            if (!IsEmpty && !Debugging) {
                 ColorTile(fullColor);
             }
-            
-            if (Input.GetMouseButtonDown(0) && IsEmpty) {
+            else if (Input.GetMouseButtonDown(0) && IsEmpty) {
                 PlaceTower();
             }
         }
     }
 
     private void OnMouseExit() {
-        ColorTile(Color.white);
+        if (!Debugging) {
+            ColorTile(Color.white);
+        }
     }
 
     private void PlaceTower() {
@@ -82,6 +85,6 @@ public class TileScript : MonoBehaviour {
     }
 
     private void ColorTile(Color32 newColor) {
-        spriteRenderer.color = newColor;
+        SpriteRenderer.color = newColor;
     }
 }
